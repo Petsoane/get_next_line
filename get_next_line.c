@@ -6,11 +6,11 @@
 /*   By: lpetsoan <lpetsoan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 08:07:15 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/07/30 15:20:07 by lpetsoan         ###   ########.fr       */
+/*   Updated: 2019/07/30 15:59:54 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/get_next_line.h"
 
 static int		ft_isline(char *s, int i)
 {
