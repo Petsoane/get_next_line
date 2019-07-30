@@ -6,7 +6,7 @@
 /*   By: lpetsoan <lpetsoan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 08:07:15 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/07/30 14:56:41 by lpetsoan         ###   ########.fr       */
+/*   Updated: 2019/07/30 15:20:07 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,24 @@ int				get_next_line(const int fd, char **line)
 {
 	int			i;
 	int			ret;
+	//static char		out[BUFF_SIZE + 1];
 	char		*out;
 	char		*inc;
 
 	i = 0;
 	inc = NULL;
 	out = (char *)malloc(sizeof(char) * BUFF_SIZE + 1);
-	if (!out || fd < 0 || read(fd, &out, 0) == -1)
+	if (read(fd, &out, 0) == -1)
 		return (-1);
 	while ((ret = read(fd, &out[i], 1)) > 0 && out[i] != '\n' && i < BUFF_SIZE)
 		i++;
 	out[i + 1] = '\0';
 	if (!ft_isline(out, i) && i == BUFF_SIZE)
 	{
+		//*line = ft_strdup(out);
 		get_next_line(fd, &inc);
 		join_and_free(line, out, &inc);
+		//*line = ft_strjoin(*line, inc);
 	}
 	else
 	{
