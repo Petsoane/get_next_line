@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line2.c                                   :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpetsoan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lpetsoan <lpetsoan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 08:07:15 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/06/08 13:04:21 by lpetsoan         ###   ########.fr       */
+/*   Updated: 2019/07/30 13:09:51 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		ft_isline(char *s)
+static int		ft_isline(char *s, int i)
 {
-	while (*s)
-	{
-		if (*(s + 1) == '\0' &&  *s == '\n')
-			return (1);
-		s++;
-	}
+	if (s[i] == '\n' && s[i + 1] == '\0')
+		return (1);
 	return (0);
 }
 
@@ -28,26 +24,29 @@ int		get_next_line(const int fd, char **line)
 	int			i;
 	int			ret;
 	char		*out;
-	static char	*inc_buff;
+	char		*inc;
 
 	if (fd < 0 || read(fd, &out, 0) == -1)
 		return (-1);
 	i = 0;
-	inc_buff = NULL;
-	if (!(out =(char *) malloc(sizeof(char) * BUFF_SIZE + 1)))
+	inc = NULL;
+	if (!(out = (char *)malloc(sizeof(char) * BUFF_SIZE + 1)))
 		return (-1);
-	while ((ret = read(fd, &out[i], 1)) > 0 && out[i] !='\n' && i < BUFF_SIZE)
+	while ((ret = read(fd, &out[i], 1)) > 0 && out[i] != '\n' && i < BUFF_SIZE)
 		i++;
 	out[i + 1] = '\0';
-	if (!ft_isline(out) && i == BUFF_SIZE)
+	if (!ft_isline(out, i) && i == BUFF_SIZE)
 	{
-		get_next_line(fd, &inc_buff);
-		*line = ft_strjoin(out, inc_buff);
-	}else
+		get_next_line(fd, &inc);
+		*line = ft_strjoin(out, inc);
+		free(inc);
+	}
+	else
 	{
 		out[i] = '\0';
-		*line = out;
+		*line = ft_strdup(out);
 	}
+	free(out);
 	if (ret != 0)
 		return (ret);
 	return (0);

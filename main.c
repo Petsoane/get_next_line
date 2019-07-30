@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpetsoan <lpetsoan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 12:29:02 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/07/30 12:57:58 by lpetsoan         ###   ########.fr       */
+/*   Updated: 2019/07/30 12:46:27 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
-# include <stdlib.h>
-# include <stdio.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include "libft/libft.h"
+#include "get_next_line.h"
+#include <fcntl.h>
 
-int		get_next_line(const int fd, char **line);
-#endif
+int main(void)
+{
+	int fd = open("test.txt", O_RDONLY);
+	char *out;
+	//int fd = 0;
+	while (get_next_line(fd, &out) == 1)
+	{
+		printf("%s", out);
+	}
+	return (0);
+}
