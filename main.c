@@ -6,11 +6,11 @@
 /*   By: lpetsoan <lpetsoan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 12:29:02 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/07/30 15:54:26 by lpetsoan         ###   ########.fr       */
+/*   Updated: 2019/08/01 07:19:29 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/get_next_line.h"
 #include <fcntl.h>
 
 int main(void)

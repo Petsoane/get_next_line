@@ -6,13 +6,14 @@
 /*   By: lpetsoan <lpetsoan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 12:29:02 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/07/30 15:59:56 by lpetsoan         ###   ########.fr       */
+/*   Updated: 2019/08/01 08:57:11 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE 1
+# define BUFF_SIZE 32
+# define LINE_BUFF 1
 # include <stdlib.h>
 # include <stdio.h>
 # include <sys/types.h>
