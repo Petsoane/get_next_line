@@ -1,58 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpetsoan <lpetsoan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/30 08:07:15 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/07/30 15:59:54 by lpetsoan         ###   ########.fr       */
+/*   Created: 2019/05/29 12:29:02 by lpetsoan          #+#    #+#             */
+/*   Updated: 2019/08/01 09:01:18 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/get_next_line.h"
 
-static int		ft_isline(char *s, int i)
-{
-	if (s[i] == '\n' && s[i + 1] == '\0')
-		return (1);
-	return (0);
-}
-
-static void		join_and_free(char **line, char *out, char **inc)
-{
-	*line = ft_strjoin(out, *inc);
-	free(*inc);
-}
+static int		get_line(char **line , const int fd);
 
 int				get_next_line(const int fd, char **line)
 {
-	int			i;
-	int			ret;
-	//static char		out[BUFF_SIZE + 1];
-	char		*out;
-	char		*inc;
+	static char *out;
+	int ret;
+	if (read(fd, line, 0) == -1)
+		return (-1);
+	ret = get_line(&out, fd);
+	if (ret != -1)
+		*line = ft_strdup(out);
+	free(out);
+	return (ret);
+}
+
+static int		get_line(char **line, const int fd)
+{
+	int		i;
+	int 	ret;
+	static char out[BUFF_SIZE + 1];
 
 	i = 0;
-	inc = NULL;
-	out = (char *)malloc(sizeof(char) * BUFF_SIZE + 1);
-	if (read(fd, &out, 0) == -1)
-		return (-1);
-	while ((ret = read(fd, &out[i], 1)) > 0 && out[i] != '\n' && i < BUFF_SIZE)
+	*line = ft_strdup("");
+	while((ret = read(fd, &out[i], 1)) > 0 && out[i] != '\n')
+	{
 		i++;
-	out[i + 1] = '\0';
-	if (!ft_isline(out, i) && i == BUFF_SIZE)
-	{
-		//*line = ft_strdup(out);
-		get_next_line(fd, &inc);
-		join_and_free(line, out, &inc);
-		//*line = ft_strjoin(*line, inc);
+		if (i == BUFF_SIZE)
+		{
+			out[i] = '\0';
+			*line = ft_strjoin(*line, out);
+			i = 0;
+		}
 	}
-	else
-	{
-		out[i] = '\0';
-		*line = ft_strdup(out);
-	}
-	free(out);
-	return (ret != 0 ? ret : 0);
+	out[i] = '\0';
+	*line = ft_strjoin(*line, out);
+	if (ret != 0)
+		return (ret);
+	return (0);
 }
