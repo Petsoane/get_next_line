@@ -6,7 +6,7 @@
 /*   By: event <event@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 11:45:04 by event             #+#    #+#             */
-/*   Updated: 2019/08/16 12:04:10 by lpetsoan         ###   ########.fr       */
+/*   Updated: 2019/08/16 12:11:16 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	line_copy(char *buf, char *line)
 {
-	size_t i;
+	int i;
 
 	i = 0;
 	while (line[i] != '\n' && line[i])
