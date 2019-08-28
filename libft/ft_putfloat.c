@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_putfloat.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpetsoan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/24 10:31:05 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/05/24 12:20:43 by lpetsoan         ###   ########.fr       */
+/*   Created: 2019/06/27 09:49:04 by lpetsoan          #+#    #+#             */
+/*   Updated: 2019/06/27 10:00:42 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
-#include <stdio.h>
 
-void	ft_lstdelone(t_list **node, void (*del)(void *, size_t len))
+void		ft_putfloat(double num, int precision)
 {
-	del(&((*node)->data), (*node)->d_size);
-	free(node);
-	*node = NULL;
+	int		base;
+	int		fract;
+
+	base = num;
+	fract = (num - base) * precision + 0.001;
+	ft_putnbr(base);
+	ft_putchar('\n');
+	ft_putnbr(fract);
 }

@@ -6,12 +6,16 @@
 /*   By: lpetsoan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:36:46 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/05/17 07:57:44 by lpetsoan         ###   ########.fr       */
+/*   Updated: 2019/06/21 07:56:27 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 void	ft_striter(char *s, void (*f)(char *c))
 {
+	if (s == NULL)
+		return ;
 	while (*s)
 		f(s++);
 }

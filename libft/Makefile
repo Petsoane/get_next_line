@@ -6,7 +6,7 @@
 #    By: lpetsoan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/20 08:07:20 by lpetsoan          #+#    #+#              #
-#    Updated: 2019/05/24 11:35:43 by lpetsoan         ###   ########.fr        #
+#    Updated: 2019/07/22 14:21:30 by lpetsoan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,8 +66,14 @@ SRC = ft_atoi.c \
       ft_strtrim.c \
       ft_tolower.c \
       ft_toupper.c \
-	  ft_lstnew.c\
-
+	  ft_wordlen.c\
+	  ft_wordcount.c\
+	  ft_removeend.c\
+	  ft_digitlen.c\
+	  ft_baseconv.c\
+	  ft_strrev.c\
+	  ft_ifalloc.c\
+	  ft_strndup.c\
 
 OBJ = $(SRC:.c=.o)
 

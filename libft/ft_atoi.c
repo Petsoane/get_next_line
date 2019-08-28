@@ -6,37 +6,41 @@
 /*   By: lpetsoan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 08:14:18 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/05/28 16:46:26 by lpetsoan         ###   ########.fr       */
+/*   Updated: 2019/07/19 18:17:15 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
+#include <stdio.h>
 
-int		ft_atoi(const char *num)
+static int	isspace(int n)
 {
-	long long	base;
-	long long	out;
-	long long	start;
-	long long	end;
+	if (n == '\t' || n == '\n' || n == '\v'
+			|| n == '\r' || n == '\f' || n == ' ')
+		return (1);
+	return (0);
+}
 
-	end = 0;
-	start = 0;
-	base = 1;
+int			ft_atoi(const char *num)
+{
+	long int	sign;
+	long int	out;
+
 	out = 0;
-	if (num[0] == '-')
-		end = 1;
-	while (num[start])
-		start++;
-	start--;
-	while (start != end)
+	sign = 0;
+	while (isspace(*num) == 1)
+		num++;
+	if (*num == '-' || *num == '+')
 	{
-		if (!ft_isdigit(num[start]))
-		{
-			return (0);
-		}
-		out += (num[start--] - '0') * base;
-		base *= 10;
+		if (*num == '-')
+			sign = 1;
+		num++;
 	}
-	out += (num[start] - '0') * base;
-	out *= num[0] == '-' ? -1 : 1;
-	return ((long)out);
+	while (*num && *num >= '0' && *num <= '9')
+	{
+		out = (out * 10) + (*num - '0');
+		num++;
+	}
+	out = sign == 1 ? -out : out;
+	return ((int)out);
 }

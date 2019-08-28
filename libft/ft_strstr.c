@@ -6,7 +6,7 @@
 /*   By: lpetsoan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 10:19:04 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/05/28 16:23:26 by lpetsoan         ###   ########.fr       */
+/*   Updated: 2019/07/03 09:23:44 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ char	*ft_strstr(const char *h, const char *n)
 	int		i;
 	int		size_n;
 	int		size_h;
-
 
 	i = 0;
 	size_n = ft_strlen(n);
@@ -37,5 +36,4 @@ char	*ft_strstr(const char *h, const char *n)
 		h++;
 	}
 	return (NULL);
-
 }

@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpetsoan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lpetsoan <lpetsoan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/19 15:26:24 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/05/30 09:22:10 by lpetsoan         ###   ########.fr       */
+/*   Created: 2019/05/29 12:29:02 by lpetsoan          #+#    #+#             */
+/*   Updated: 2019/08/28 10:33:07 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "../includes/get_next_line.h"
+#include <fcntl.h>
 
-char	*ft_strncat(char *dst, char const *src, size_t n)
+int main(void)
 {
-	int i;
-
-	i = 0;
-	while (dst[i])
-		i++;
-	while (*src && n > 0)
+	int fd = open("bible.txt", O_RDONLY);
+	char *out;
+	//int fd = 0;
+	while (get_next_line(fd, &out) == 1)
 	{
-		dst[i++] = *src++;
-		n--;
+		printf("%s\n", out);
 	}
-	dst[i] = '\0';
-	return (dst);
+	return (0);
 }

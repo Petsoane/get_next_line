@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_wordcount.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpetsoan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/21 09:35:34 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/06/04 11:40:13 by event            ###   ########.fr       */
+/*   Created: 2019/06/25 14:47:38 by lpetsoan          #+#    #+#             */
+/*   Updated: 2019/07/22 14:18:13 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
-
-char	*ft_strmap(char const *s, char (*f)(char c))
+int		ft_wordcount(char const *s, char c)
 {
-	char	*str;
-	int		size;
-	int		i;
+	int	count;
 
-	if (s == NULL)
-		return (NULL);
-	size = ft_strlen(s);
-	i = 0;
-	str = (char *)malloc(size + 1);
-	if (!str)
-		return (NULL);
-	while (s[i])
+	count = 0;
+	while (*s)
 	{
-		str[i] = f(s[i]);
-		i++;
+		while (*s && *s == c)
+			s++;
+		if (*s != '\0')
+			count++;
+		while (*s && *s != c)
+			s++;
 	}
-	str[i] = '\0';
-	return (str);
+	return (count);
 }

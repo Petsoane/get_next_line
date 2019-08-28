@@ -1,17 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_baseconv.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpetsoan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/24 13:29:38 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/05/24 13:33:14 by lpetsoan         ###   ########.fr       */
+/*   Created: 2019/06/27 13:02:00 by lpetsoan          #+#    #+#             */
+/*   Updated: 2019/07/05 15:19:06 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_lstadd(t_list **h_node, t_list *new_node)
+#include "libft.h"
+
+void	ft_baseconv(int input, int base)
 {
-	new_node->next = *h_node;
-	*h_node = new_node;
+	const char *v_base = "0123456789ABCDEF";
+
+	if (base <= 0 || input == 0)
+		return ;
+	if (input < 0)
+	{
+		ft_putchar('-');
+		input *= -1;
+	}
+	ft_baseconv(input / base, base);
+	ft_putchar(v_base[input % base]);
 }

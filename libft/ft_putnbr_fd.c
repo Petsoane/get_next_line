@@ -6,7 +6,7 @@
 /*   By: lpetsoan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 14:37:59 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/05/21 16:04:35 by lpetsoan         ###   ########.fr       */
+/*   Updated: 2019/07/19 15:26:02 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,26 @@
 
 void	ft_putnbr_fd(int num, int fd)
 {
-	char ch;
-	char sign;
+	char	ch;
+	int		is_lim;
 
+	is_lim = 0;
 	if (num < 0)
 	{
-		sign = '-';
-		write(fd, &sign, 1);
-		num = -num;
+		write(fd, "-", 1);
+		if (num == -2147483648)
+		{
+			num = -num - 1;
+			is_lim = 1;
+		}
+		else
+			num = -num;
 	}
 	if (num < 10)
-	{
-		ch = (num % 10) + '0';
-	}
+		ch = is_lim ? 8 + '0' : (num % 10) + '0';
 	else
 	{
-		ch = (num % 10) + '0';
+		ch = is_lim ? 8 + '0' : (num % 10) + '0';
 		ft_putnbr_fd(num / 10, fd);
 	}
 	write(fd, &ch, 1);

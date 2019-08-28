@@ -6,7 +6,7 @@
 /*   By: lpetsoan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 14:19:21 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/05/28 16:30:43 by lpetsoan         ###   ########.fr       */
+/*   Updated: 2019/06/21 08:00:31 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,4 @@ char	*ft_strnstr(const char *h, const char *n, size_t size)
 		size--;
 	}
 	return (NULL);
-
 }
-
-
-

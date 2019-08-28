@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_digitlen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpetsoan <lpetsoan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpetsoan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/29 12:29:02 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/08/01 07:19:29 by lpetsoan         ###   ########.fr       */
+/*   Created: 2019/06/27 10:12:30 by lpetsoan          #+#    #+#             */
+/*   Updated: 2019/07/05 14:46:31 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/get_next_line.h"
-#include <fcntl.h>
-
-int main(void)
+int		ft_digitlen(int num)
 {
-	int fd = open("bible.txt", O_RDONLY);
-	char *out;
-	//int fd = 0;
-	while (get_next_line(fd, &out) == 1)
+	int len;
+
+	len = 1;
+	while (num != 0)
 	{
-		printf("%s\n", out);
+		len *= 10;
+		num /= 10;
 	}
-	return (0);
+	return (len / 10);
 }

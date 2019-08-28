@@ -6,14 +6,16 @@
 /*   By: lpetsoan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 15:32:36 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/05/28 13:55:52 by lpetsoan         ###   ########.fr       */
+/*   Updated: 2019/06/21 07:55:24 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void	ft_strdel(void **s)
+void	ft_strdel(char **s)
 {
+	if (s == NULL)
+		return ;
 	free(*s);
 	*s = NULL;
 }

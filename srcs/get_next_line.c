@@ -6,11 +6,11 @@
 /*   By: lpetsoan <lpetsoan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 08:07:15 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/07/30 15:59:54 by lpetsoan         ###   ########.fr       */
+/*   Updated: 2019/08/28 10:33:24 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/get_next_line.h"
+#include "../includes/get_next_line.h"
 
 static int		ft_isline(char *s, int i)
 {
@@ -29,7 +29,6 @@ int				get_next_line(const int fd, char **line)
 {
 	int			i;
 	int			ret;
-	//static char		out[BUFF_SIZE + 1];
 	char		*out;
 	char		*inc;
 
@@ -43,10 +42,8 @@ int				get_next_line(const int fd, char **line)
 	out[i + 1] = '\0';
 	if (!ft_isline(out, i) && i == BUFF_SIZE)
 	{
-		//*line = ft_strdup(out);
 		get_next_line(fd, &inc);
 		join_and_free(line, out, &inc);
-		//*line = ft_strjoin(*line, inc);
 	}
 	else
 	{

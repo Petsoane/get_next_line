@@ -6,7 +6,7 @@
 /*   By: lpetsoan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 08:47:26 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/05/28 13:59:30 by lpetsoan         ###   ########.fr       */
+/*   Updated: 2019/06/04 11:37:38 by event            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int pos, char c))
 	int		size;
 	int		i;
 
+	if (s == NULL)
+		return (NULL);
 	size = ft_strlen(s);
 	i = 0;
 	str = (char *)malloc(size + 1);

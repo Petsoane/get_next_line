@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_removeend.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpetsoan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/24 13:34:42 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/05/24 13:40:02 by lpetsoan         ###   ########.fr       */
+/*   Created: 2019/06/25 17:20:32 by lpetsoan          #+#    #+#             */
+/*   Updated: 2019/06/25 17:30:03 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+#include "libft.h"
+
+void	ft_removeend(char **out, int i)
 {
-	while (!lst)
-	{
-		f(lst);
-		lst = lst->next;
-	}
+	while (i != 0 && ((*out)[i] == ' ' || (*out)[i] == '\t'
+				|| (*out)[i] == '\n'))
+		i--;
+	(*out)[i + 1] = '\0';
 }

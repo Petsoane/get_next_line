@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_max_wordlen.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpetsoan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/21 09:35:34 by lpetsoan          #+#    #+#             */
-/*   Updated: 2019/06/04 11:40:13 by event            ###   ########.fr       */
+/*   Created: 2019/07/19 16:02:09 by lpetsoan          #+#    #+#             */
+/*   Updated: 2019/07/19 16:07:16 by lpetsoan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strmap(char const *s, char (*f)(char c))
+int	ft_max_wordlen(const char *s, char c)
 {
-	char	*str;
-	int		size;
-	int		i;
+	int len;
+	int tmp;
 
-	if (s == NULL)
-		return (NULL);
-	size = ft_strlen(s);
-	i = 0;
-	str = (char *)malloc(size + 1);
-	if (!str)
-		return (NULL);
-	while (s[i])
+	tmp = 0;
+	len = 0;
+	while (*s)
 	{
-		str[i] = f(s[i]);
-		i++;
+		while (*s && *s == c)
+			s++;
+		while (*s && *s != c)
+		{
+			tmp++;
+			s++;
+		}
+		if (tmp > len)
+			len = tmp;
 	}
-	str[i] = '\0';
-	return (str);
+	return (len);
 }
